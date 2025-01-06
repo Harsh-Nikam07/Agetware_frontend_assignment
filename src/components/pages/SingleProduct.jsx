@@ -10,6 +10,7 @@ import {
 import Rating from './Rating';
 import { Button } from '../ui/button';
 import { CartState } from '@/context/Context';
+import { Link } from 'react-router-dom';
   
 
 const SingleProduct = ({ product }) => {
@@ -35,7 +36,9 @@ const SingleProduct = ({ product }) => {
         <CardHeader>
           
           <CardDescription className="w-full flex justify-center items-center">
-            <img src={product.image} alt={product.title} className='w-32 h-32 object-contain'/>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.image} alt={product.title} className='w-32 h-32 object-contain'/>
+            </Link>
           </CardDescription>
         </CardHeader>
 
@@ -64,7 +67,7 @@ const SingleProduct = ({ product }) => {
 
               {
                 cart.some( p => p.id === product.id) ? (
-                  <Button
+                  <Button className="w-full"
                   onClick={() => {
                     try {
                       dispatch({
@@ -77,7 +80,7 @@ const SingleProduct = ({ product }) => {
                   }}
                   variant="destructive">Remove from Cart</Button>
                 ) : (
-                  <Button
+                  <Button className="w-full"
                     onClick={() => {
                       try {
                         dispatch({

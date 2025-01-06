@@ -21,12 +21,21 @@ const Header = () => {
 
 
   return (
-    <div className="w-full h-fit md:px-12 lg:px-24 xl:px-32 px-5 py-3 flex justify-between items-center flex-row bg-black">
+    <div className="w-full h-fit md:px-12 lg:px-24 xl:px-32 px-5 py-3 flex justify-between items-center flex-row ">
 
-    {/* <Link to='/'>
-      <img src="/main-logo.svg" alt="" className="w-32 mt-3 mb-3 md:visible lg:visible xl:visible hidden" />
-      <img src="/logo-fevicon.svg" alt="" className="w-8 mt-3 mb-3 md:hidden lg:hidden xl:hidden visible" />
-    </Link> */}
+    <Link to="/">
+      <img 
+        src="/main-logo.svg" 
+        alt="" 
+        className="w-32 mt-3 mb-3 hidden md:block lg:block xl:block" 
+      />
+      <img 
+        src="/logo-fevicon.svg" 
+        alt="" 
+        className="w-8 mt-3 mb-3 block md:hidden lg:hidden xl:hidden" 
+      />
+    </Link>
+
 
 
       <div className="seachBarSection w-1/2">
@@ -35,11 +44,11 @@ const Header = () => {
       <div className="cartDropDownSection">
       <Popover >
         <PopoverTrigger className="text-white px-3 py-2 rounded-lg flex justify-center items-center flex-row gap-2 transition-all relative">
-          <FaCartShopping className="text-xl w-12"/>
+          <FaCartShopping className="text-xl w-12 text-black"/>
           {/* <IoIosArrowDown/> */}
           {cart.length > 0 && <span className="absolute top-0 right-0 bg-slate-600 text-white text-[12px] rounded-full px-2 py-[4px] font-bold">{cart.length}</span>}
         </PopoverTrigger>
-        <PopoverContent className="mt-6 flex justify-start items-start flex-col gap-5">
+        <PopoverContent className="mt-6 flex justify-start items-start flex-col gap-5 overflow-y-auto">
           {
             cart.length > 0 ? (
               <>
