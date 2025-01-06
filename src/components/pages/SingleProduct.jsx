@@ -7,9 +7,22 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
+import Rating from './Rating';
+import { Button } from '../ui/button';
+import { CartState } from '@/context/Context';
   
 
 const SingleProduct = ({ product }) => {
+
+
+  const {
+    state: { cart },
+    dispatch
+  } = CartState();
+
+  console.log(cart);
+
+
   return (
     <div  className='w-full'>
         {/* <div>
@@ -17,18 +30,70 @@ const SingleProduct = ({ product }) => {
             <span>Title: {product.title}</span>
         </div> */}
 
-        <div>
-        <Card>
-            <CardHeader>
-                <CardTitle>{product.title}</CardTitle>
-                <CardDescription>Card Description</CardDescription>
-            </CardHeader>
+        <div className='h-full'>
+        <Card className='h-full'>
+        <CardHeader>
+          
+          <CardDescription className="w-full flex justify-center items-center">
+            <img src={product.image} alt={product.title} className='w-32 h-32 object-contain'/>
+          </CardDescription>
+        </CardHeader>
+
             <CardContent>
-                <p>Card Content</p>
+              <div>
+              <div>
+                  {/* <CardTitle className="leading-5">{product.title.substring(0, 50) + '...'}</CardTitle> */}
+                  <CardTitle className="leading-5">{product.title.split(" ").length > 8 ? `${product.title.split(" ").slice(0, 12).join(" ")}...` : product.title}</CardTitle>
+                </div>
+
+                <div className='w-full flex justify-between items-center flex-row flex-wrap my-3'>
+                  <div className='price'>
+                    <span>$ {product.price}</span>
+                  </div>
+
+                  <div className='rating'>
+                    <Rating rating={Math.floor(product.rating.rate)}/>
+                  </div>
+                </div>
+              </div>
+
+
             </CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
+
+            <CardFooter className="w-full flex justify-end ">
+
+              {
+                cart.some( p => p.id === product.id) ? (
+                  <Button
+                  onClick={() => {
+                    try {
+                      dispatch({
+                        type: "REMOVE_FROM_CART",
+                        payload: product
+                      });
+                    } catch (error) {
+                      console.error("Error removing from cart:", error);
+                    }
+                  }}
+                  variant="destructive">Remove from Cart</Button>
+                ) : (
+                  <Button
+                    onClick={() => {
+                      try {
+                        dispatch({
+                          type: "ADD_TO_CART",
+                          payload: product
+                        });
+                      } catch (error) {
+                        console.error("Error adding to cart:", error);
+                      }
+                    }}
+                  >Add to Cart</Button>
+                )
+              }
+
             </CardFooter>
+
         </Card>
 
         </div>
