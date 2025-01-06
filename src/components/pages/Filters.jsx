@@ -2,8 +2,14 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "../ui/button"
+import Rating from "./Rating"
+import { useState } from "react"
 
 const Filters = () => {
+
+
+    const [rate, setRate] = useState(3)
+
   return (
     <div className="w-full h-full flex  justify-start items-start flex-col gap-2">
       <div>
@@ -71,6 +77,20 @@ const Filters = () => {
            Jewelery
         </label>
         </div>
+      </div>
+
+
+      <div>
+        <label
+            htmlFor="rating"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >
+        Rating
+        </label>
+        <Rating 
+        rating={rate}
+        onClick={(i)=> setRate(i + 1)}
+        style={{cursor: "pointer"}}/>
       </div>
 
       <div>

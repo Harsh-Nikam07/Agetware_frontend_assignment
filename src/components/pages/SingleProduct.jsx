@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types';
-// import {
-//     Card,
-//     CardContent,
-//     CardDescription,
-//     CardFooter,
-//     CardHeader,
-//     CardTitle,
-//   } from "@/components/ui/card"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
   
 
 const SingleProduct = ({ product }) => {
   return (
-    <div>
-        <div>
+    <div  className='w-full'>
+        {/* <div>
             <span>Category: {product.category}</span>
             <span>Title: {product.title}</span>
-        </div>
+        </div> */}
 
         <div>
-        {/* <Card>
+        <Card>
             <CardHeader>
-                <CardTitle>Card Title</CardTitle>
+                <CardTitle>{product.title}</CardTitle>
                 <CardDescription>Card Description</CardDescription>
             </CardHeader>
             <CardContent>
@@ -29,7 +29,7 @@ const SingleProduct = ({ product }) => {
             <CardFooter>
                 <p>Card Footer</p>
             </CardFooter>
-        </Card> */}
+        </Card>
 
         </div>
     </div>
