@@ -17,11 +17,13 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
 
-  const { state : { cart }, dispatch} = CartState()
+  const { state : { cart }, dispatch, productState: { searchQuery }, productDispatch,} = CartState()
+
+  console.log(searchQuery)
 
 
   return (
-    <div className="w-full h-fit md:px-12 lg:px-24 xl:px-32 px-5 py-3 flex justify-between items-center flex-row ">
+    <div className="w-full h-fit md:px-12 lg:px-24 xl:px-32 px-5 py-3 flex justify-between items-center flex-row sticky top-0 z-50 bg-white shadow-md">
 
     <Link to="/">
       <img 
@@ -39,7 +41,12 @@ const Header = () => {
 
 
       <div className="seachBarSection w-1/2">
-        <Input type= "search" placeholder= "Search a prod" className="w-full  bg-white"/>
+        <Input type= "search" placeholder= "Search a prod" className="w-full  bg-white"  onChange={(e) => {
+          productDispatch({
+            type: "SORT_BY_SEARCH",
+            payload: e.target.value,
+          })
+        }}/>
       </div>
       <div className="cartDropDownSection">
       <Popover >

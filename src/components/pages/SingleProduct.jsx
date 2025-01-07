@@ -3,7 +3,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
   } from "@/components/ui/card"
@@ -21,7 +20,7 @@ const SingleProduct = ({ product }) => {
     dispatch
   } = CartState();
 
-  console.log(cart);
+  // console.log(cart);
 
 
   return (
@@ -32,8 +31,8 @@ const SingleProduct = ({ product }) => {
         </div> */}
 
         <div className='h-full'>
-        <Card className='h-full'>
-        <CardHeader>
+        <Card className='w-full h-full flex justify-center items-stretch flex-col gap-6'>
+        <CardHeader className='w-full h-full flex justify-center items-stretch flex-col gap-6'>
           
           <CardDescription className="w-full flex justify-center items-center">
             <Link to={`/product/${product.id}`}>
@@ -42,60 +41,67 @@ const SingleProduct = ({ product }) => {
           </CardDescription>
         </CardHeader>
 
-            <CardContent>
+            <CardContent className='w-full h-full flex justify-center items-stretch flex-col gap-6'>
               <div>
               <div>
                   {/* <CardTitle className="leading-5">{product.title.substring(0, 50) + '...'}</CardTitle> */}
                   <CardTitle className="leading-5">{product.title.split(" ").length > 8 ? `${product.title.split(" ").slice(0, 12).join(" ")}...` : product.title}</CardTitle>
                 </div>
 
-                <div className='w-full flex justify-between items-center flex-row flex-wrap my-3'>
+                <div className='w-full flex justify-between items-center flex-row flex-wrap my-6'>
                   <div className='price'>
-                    <span>$ {product.price}</span>
+                    <span className='font-bold'>$ {product.price}</span>
                   </div>
 
                   <div className='rating'>
                     <Rating rating={Math.floor(product.rating.rate)}/>
                   </div>
                 </div>
+
+                <div>
+                  <span>{product.category}</span>
+                </div>
+
+                {
+                cart.some( p => p.id === product.id) ? (
+                  <div className="w-full flex justify-end ">
+                    <Button className="w-full"
+                    onClick={() => {
+                      try {
+                        dispatch({
+                          type: "REMOVE_FROM_CART",
+                          payload: product
+                        });
+                      } catch (error) {
+                        console.error("Error removing from cart:", error);
+                      }
+                    }}
+                    variant="destructive">Remove from Cart</Button>
+                  </div>
+                ) : (
+                  <div className="w-full flex justify-end ">
+                    <Button className="w-full"
+                      onClick={() => {
+                        try {
+                          dispatch({
+                            type: "ADD_TO_CART",
+                            payload: product
+                          });
+                        } catch (error) {
+                          console.error("Error adding to cart:", error);
+                        }
+                      }}
+                    >Add to Cart</Button>
+                  </div>
+                )
+              }
+
               </div>
 
 
             </CardContent>
 
-            <CardFooter className="w-full flex justify-end ">
 
-              {
-                cart.some( p => p.id === product.id) ? (
-                  <Button className="w-full"
-                  onClick={() => {
-                    try {
-                      dispatch({
-                        type: "REMOVE_FROM_CART",
-                        payload: product
-                      });
-                    } catch (error) {
-                      console.error("Error removing from cart:", error);
-                    }
-                  }}
-                  variant="destructive">Remove from Cart</Button>
-                ) : (
-                  <Button className="w-full"
-                    onClick={() => {
-                      try {
-                        dispatch({
-                          type: "ADD_TO_CART",
-                          payload: product
-                        });
-                      } catch (error) {
-                        console.error("Error adding to cart:", error);
-                      }
-                    }}
-                  >Add to Cart</Button>
-                )
-              }
-
-            </CardFooter>
 
         </Card>
 

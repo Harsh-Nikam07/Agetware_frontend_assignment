@@ -9,19 +9,21 @@ const Context = ({ children }) => {
     cart: [],
   });
 
+
   const [productState, productDispatch] = useReducer(productReducer, {
-    byStock: false,
-    byFastDelivery: false,
+    sort: null,
     byRating: 0,
     searchQuery: "",
+    selectedCategories: [], // Initial state for category filtering
   });
+  
 
   // Fetch products asynchronously
   const fetchProducts = async () => {
     try {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
-      console.log(data); // Log the fetched data
+      console.log("Fetched Products:", data); // Log the fetched data
       dispatch({ type: "SET_PRODUCTS", payload: data }); // Dispatch action to update products
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -33,10 +35,10 @@ const Context = ({ children }) => {
     fetchProducts();
   }, []);
 
-  console.log(state.products); // Log the products in the state
+
 
   return (
-    <Cart.Provider value={{ state, dispatch, productState, productDispatch }}>
+    <Cart.Provider value={{ state, dispatch, productState, productDispatch}}>
       {children}
     </Cart.Provider>
   );

@@ -27,6 +27,8 @@ import { CartState } from "@/context/Context";
 import Rating from "./Rating";
 import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Cart = () => {
   const {
@@ -88,11 +90,13 @@ const Cart = () => {
                       {product.title}
                     </TableCell>
                     <TableCell className="flex justify-center items-center">
+                      <Link to={`/product/${product.id}`}>
                       <img
                         src={product.image}
                         alt={product.title}
                         className="w-16 h-16 object-contain my-4"
                       />
+                      </Link>
                     </TableCell>
                     <TableCell>$ {product.price}</TableCell>
                     <TableCell>
@@ -159,7 +163,18 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div>The cart is empty</div>
+        <div className="w-full h-screen flex justify-center items-center flex-col gap-5"> 
+          <span className="font-bold text-2xl">
+            The cart is empty
+          </span>
+
+          <Link to="/">
+            <Button>
+              Browse Products
+              <IoIosArrowForward/>
+            </Button>
+          </Link>
+        </div>
       )}
     </>
   );
