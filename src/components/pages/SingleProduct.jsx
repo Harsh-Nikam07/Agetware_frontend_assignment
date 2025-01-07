@@ -45,10 +45,15 @@ const SingleProduct = ({ product }) => {
               <div>
               <div>
                   {/* <CardTitle className="leading-5">{product.title.substring(0, 50) + '...'}</CardTitle> */}
-                  <CardTitle className="leading-5">{product.title.split(" ").length > 8 ? `${product.title.split(" ").slice(0, 12).join(" ")}...` : product.title}</CardTitle>
+                  <CardTitle className="leading-5 md:text-base text-sm">{product.title.split(" ").length > 8 ? `${product.title.split(" ").slice(0, 12).join(" ")}...` : product.title}</CardTitle>
+                </div>
+                <div className='my-2 w-full'>
+                  <div className=' w-full px-0 py-0 pb-1 leading-relaxed rounded-full flex justify-end'>
+                    <span className='text-base font-semibold text-slate-400'>{product.category}</span>
+                    </div>
                 </div>
 
-                <div className='w-full flex justify-between items-center flex-row flex-wrap my-6'>
+                <div className='w-full flex justify-between md:items-center items-start md:flex-row flex-col flex-wrap my-6'>
                   <div className='price'>
                     <span className='font-bold'>$ {product.price}</span>
                   </div>
@@ -58,9 +63,7 @@ const SingleProduct = ({ product }) => {
                   </div>
                 </div>
 
-                <div>
-                  <span>{product.category}</span>
-                </div>
+
 
                 {
                 cart.some( p => p.id === product.id) ? (

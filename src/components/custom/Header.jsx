@@ -41,12 +41,13 @@ const Header = () => {
 
 
       <div className="seachBarSection w-1/2">
-        <Input type= "search" placeholder= "Search a prod" className="w-full  bg-white"  onChange={(e) => {
-          productDispatch({
-            type: "SORT_BY_SEARCH",
-            payload: e.target.value,
-          })
-        }}/>
+        <Input type= "search" placeholder= "Search Products..." className="w-full  bg-white"  
+            onChange={(e) =>
+              productDispatch({
+                type: "SORT_BY_SEARCH",
+                payload: e.target.value,
+              })
+            }/>
       </div>
       <div className="cartDropDownSection">
       <Popover >

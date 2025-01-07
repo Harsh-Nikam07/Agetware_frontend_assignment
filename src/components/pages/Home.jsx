@@ -13,7 +13,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
+import { LiaTimesSolid } from "react-icons/lia";
 import { TiPlus } from "react-icons/ti";
 
 const Home = () => {
@@ -45,7 +45,7 @@ const Home = () => {
     // Filter by search query
     if (searchQuery) {
       filteredProducts = filteredProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
     if (byRating > 0) {
@@ -64,13 +64,13 @@ const Home = () => {
     <div className="mt-8">
       <div className="w-full h-full flex justify-start items-start flex-col flex-wrap md:gap-4 gap-0 px-3 ">
         <div className="filters w-full h-full p-2 flex md:justify-between justify-start md:items-center items-start md:flex-row flex-col md:gap-0 gap-4">
-          <Drawer>
+          <Drawer className="w-full flex justify-center">
             <DrawerTrigger>
               <Button>
                 Apply Filters <TiPlus />
               </Button>
             </DrawerTrigger>
-            <DrawerContent>
+            <DrawerContent >
               <DrawerHeader>
                 <DrawerTitle>Filters</DrawerTitle>
                 <DrawerDescription>
@@ -81,7 +81,7 @@ const Home = () => {
               </DrawerHeader>
               <DrawerFooter>
                 <DrawerClose>
-                  <Button variant="outline">Close</Button>
+                  <Button variant="destructive"><LiaTimesSolid/></Button>
                 </DrawerClose>
               </DrawerFooter>
             </DrawerContent>

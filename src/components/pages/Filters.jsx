@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "../ui/button";
 import Rating from "./Rating";
 import { CartState } from "@/context/Context";
+import { LiaTimesSolid } from "react-icons/lia";
 
 const Filters = () => {
   const {
@@ -11,14 +12,18 @@ const Filters = () => {
     productDispatch,
   } = CartState();
 
-  console.log(sort, byRating, selectedCategories);
-  console.log("Selected Categories:", selectedCategories);
+  // console.log(sort, byRating, selectedCategories);
+  // console.log("Selected Categories:", selectedCategories);
 
   return (
-    <div className="w-full h-full flex justify-start items-start flex-col gap-2">
+    <div className="w-full flex justify-center items-center flex-col gap-10">
+          <div className="w-full h-full flex md:justify-center justify-start md:items-center items-start md:flex-row flex-col md:gap-28 gap-6">
       {/* Price Sorting */}
-      <div>
-        <RadioGroup
+      <div className="w-fit flex justify-start items-start flex-col gap-2">
+        <div>
+          <span className="font-bold">FIlter by Price</span>
+        </div>
+        <RadioGroup className="w-full flex justify-start items-start md:flex-row flex-col md:gap-5 gap-2"
           defaultValue={sort === "lowToHigh" ? "ascending" : "descending"}
           onValueChange={(value) => {
             productDispatch({
@@ -29,18 +34,22 @@ const Filters = () => {
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="ascending" id="ascending" />
-            <Label htmlFor="ascending">Ascending</Label>
+            <Label htmlFor="ascending">Low to High</Label>
           </div>
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="descending" id="descending" />
-            <Label htmlFor="descending">Descending</Label>
+            <Label htmlFor="descending">High to Low</Label>
           </div>
         </RadioGroup>
       </div>
 
       {/* Category Filtering */}
       <div className="flex justify-start items-start flex-col gap-2">
-        {["men's clothing", "women's clothing", "electronics", "jewelery"].map((category) => (
+        <div>
+          <span className="font-bold">FIlter by Category</span>
+        </div>
+          <div className="flex justify-start items-start md:flex-row flex-col md:gap-5 gap-2">
+          {["men's clothing", "women's clothing", "electronics", "jewelery"].map((category) => (
           <div className="flex items-center space-x-2" key={category}>
             <Checkbox
               id={category}
@@ -61,10 +70,11 @@ const Filters = () => {
             </label>
           </div>
         ))}
+          </div>
       </div>
 
       {/* Rating Filtering */}
-      <div>
+      <div className="flex justify-start items-start flex-col gap-2">
         <label
           htmlFor="rating"
           className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -85,16 +95,17 @@ const Filters = () => {
 
   
       <div>
-        <Button
+        <Button variant="outline" className="font-bold  "
           onClick={() =>
             productDispatch({
               type: "CLEAR_FILTERS",
             })
           }
         >
-          Clear Filters
+          Clear all Filters <LiaTimesSolid/>
         </Button>
       </div>
+    </div>
     </div>
   );
 };
