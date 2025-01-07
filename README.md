@@ -109,10 +109,5 @@ The Agetware Assignment project utilizes a modern tech stack that includes vario
 
 - **Fetch API**: The native JavaScript API used to make HTTP requests to retrieve product data from an external source (`https://fakestoreapi.com/products`). The application fetches product information asynchronously and updates the state accordingly.
 
-
-  ```bash
-  npm test
-  ```
-
 ## License
 This project is licensed under the MIT License. Feel free to modify and use it as per your requirements.
