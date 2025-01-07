@@ -1,5 +1,5 @@
 ## Project Information
-Agetware Assignment is a React-based e-commerce application designed to provide users with a seamless shopping experience. The application allows users to browse a variety of products, view detailed information about each product, manage their shopping cart, and apply filters to refine their product search. The project leverages modern web technologies, including React, Vite, and Tailwind CSS, to create a responsive and user-friendly interface.
+A React-based e-commerce application designed to provide users with a seamless shopping experience. The application allows users to browse a variety of products, view detailed information about each product, manage their shopping cart, and apply filters to refine their product search. The project leverages modern web technologies, including React, Vite, and Tailwind CSS, to create a responsive and user-friendly interface.
 
 ### Key Features
 - **Product Browsing**: Users can view a list of products with images, titles, prices, and ratings.
