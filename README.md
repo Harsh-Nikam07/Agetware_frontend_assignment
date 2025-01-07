@@ -76,6 +76,40 @@ To set up the project locally, follow these detailed steps:
 - **API Integration**: The application fetches product data from an external API (`https://fakestoreapi.com/products`). Ensure you have a stable internet connection for the application to function correctly.
 - **Styling**: The application uses Tailwind CSS for styling. You can customize styles by modifying the `tailwind.config.js` file.
 - **Testing**: You can run tests (if any are included) using the command:
+
+## Tech Stack
+
+The Agetware Assignment project utilizes a modern tech stack that includes various technologies and tools to create a robust and efficient e-commerce application. Below is a detailed overview of the key technologies used in this project:
+
+### Frontend Technologies
+
+- **React**: A JavaScript library for building user interfaces. React allows for the creation of reusable UI components, making it easier to manage the application's state and rendering logic.
+
+- **Vite**: A fast build tool and development server that provides a smooth development experience. Vite leverages native ES modules and offers features like hot module replacement (HMR) for instant updates during development.
+
+- **Tailwind CSS**: A utility-first CSS framework that enables rapid UI development. Tailwind CSS allows developers to apply styles directly in the markup using utility classes, promoting a consistent design system and reducing the need for custom CSS.
+
+- **React Router**: A library for routing in React applications. It enables navigation between different components and pages, allowing for a single-page application (SPA) experience.
+
+### State Management
+
+- **Context API**: A built-in feature of React that allows for global state management. The Context API is used in this project to manage the cart state and product filters, providing a way to share data across components without prop drilling.
+
+- **useReducer Hook**: A React hook that is used for managing complex state logic. In this project, `useReducer` is employed to handle actions related to the cart and product filtering, making state updates predictable and easier to manage.
+
+### Development Tools
+
+- **ESLint**: A static code analysis tool for identifying and fixing problems in JavaScript code. ESLint helps maintain code quality and consistency throughout the project.
+
+- **Prettier**: An opinionated code formatter that ensures a consistent style across the codebase. Prettier automatically formats code on save, making it easier to read and maintain.
+
+- **Git**: A version control system used for tracking changes in the codebase. Git allows multiple developers to collaborate on the project efficiently.
+
+### API Integration
+
+- **Fetch API**: The native JavaScript API used to make HTTP requests to retrieve product data from an external source (`https://fakestoreapi.com/products`). The application fetches product information asynchronously and updates the state accordingly.
+
+
   ```bash
   npm test
   ```
